@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.game {
+  width: 100vw;
+  height: 100vh;
+  background-color: aquamarine;
+  position: relative;
+}
+
+#flappy {
+  width: 50px;
+  height: 50px;
+  border-radius: 40px;
+  background-color: black;
+  position: absolute;
+  top: 330px;
+  left: 98px;
+  -webkit-animation: up-and-down 0.35s cubic-bezier(0.34, 0.35, 0.56, 0.57) infinite alternate;
+          animation: up-and-down 0.35s cubic-bezier(0.34, 0.35, 0.56, 0.57) infinite alternate;
+}
+
+@-webkit-keyframes up-and-down {
+  0% {
+    transform: translateY(10%);
+  }
+  100% {
+    transform: translateY(-20%);
+  }
+}
+
+@keyframes up-and-down {
+  0% {
+    transform: translateY(10%);
+  }
+  100% {
+    transform: translateY(-20%);
+  }
+}
+@media screen and (min-width: 501px) {
+  .game {
+    width: 500px;
+    height: 650px;
+  }
+}/*# sourceMappingURL=style.css.map */
