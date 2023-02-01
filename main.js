@@ -1,40 +1,74 @@
 const flappy = document.querySelector("#flappy")
 const game = document.querySelector(".game")
+const pipes = document.querySelector(".pipes")
+const pipe1 = document.querySelector(".pipes__pipe1")
+const pipe2 = document.querySelector(".pipes__pipe2")
 
-const clickEvent = () => {
+let hasGravity = false
+
+let jumpInt = 0
+const makeFlappyJumpEvent = () => {
+    jumpInt = 90
+    const frame = () => {
+        let flappyTop = parseInt(window.getComputedStyle(flappy).getPropertyValue("top"))
+        if (flappy.style.top <0 + "px") {
+            clearInterval(jump)
+            jumpInt = 0
+            console.log("time to stop")
+        }else{
+        flappy.style.top = flappyTop  - jumpInt + 'px'
+        }
+    }
+    const jump = setTimeout(frame,10)
+}
+
+
+const setGravity = () => {
+    if (!hasGravity) {
+        pipeMovement()
+        hasGravity = true
     let gravityAdd = 2
-    const gravity = setInterval(frame, 10);
-    function frame() {
+    const frame = () => {
         let flappyTop = parseInt(window.getComputedStyle(flappy).getPropertyValue("top"))
         if (flappy.style.top == 600 + "px") {
-            console.log("time to stop")
+        
             clearInterval(gravity);
+            pipes.style.right = 0 + "px";
             flappy.style.top = 330 + "px"
+            hasGravity = false
         } else{
             flappy.style.top = flappyTop +  gravityAdd + 'px'
         }
     }
+    const gravity = setInterval(frame, 10);
+}
 }
 
-let jumpInt = 0
-const makeFlappyJumpEvent = () => {
-    const jump = setInterval(frame, 10);
-    jumpInt = 5
-    let jumpCount = 0
-    function frame() {
-        let flappyOrigin = parseInt(window.getComputedStyle(flappy).getPropertyValue("top"))
-        if (flappy.style.top >= 6 + "px") {
-            clearInterval(jumpInt)
-            jumpInt = 0
-            jumpCount = 0
-            console.log("time to stop")
-        }else{
-        flappy.style.top = flappyOrigin  - jumpInt + 'px'
-        }
-        jumpCount++
+
+const pipeMovement = () => {
+    let motion = 1
+const frame = () => {
+    let pipesRight = parseInt(window.getComputedStyle(pipes).getPropertyValue("right"))
+    if (flappy.style.top == 600 + "px") {
+        clearInterval(movingPipes);
     }
-    
+        if (pipes.style.right == 500 + 'px') {
+            pipes.style.right = -100 + 'px'
+            pipe1.style.flex = Math.random() * (5 - 0.3) + 0.3
+            pipe2.style.flex = Math.random() * (5 - 0.3) + 0.3
+            
+        } else{
+        pipes.style.right = pipesRight + motion + 'px'
+    }
+}
+const movingPipes = setInterval(frame, 10);
 }
 
-document.addEventListener('click',clickEvent)
+
+
+//pipeMovement()
+
+
+document.addEventListener('keydown',setGravity)
 document.addEventListener('keydown',makeFlappyJumpEvent)
+//document.addEventListener('change' , pipeMovement)

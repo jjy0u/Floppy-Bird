@@ -39,6 +39,27 @@
     transform: translateY(-20%);
   }
 }
+.pipes {
+  width: 100px;
+  height: 100%;
+  position: absolute;
+  right: 0px;
+  display: flex;
+  flex-direction: column;
+}
+.pipes__hole {
+  background-color: transparent;
+  height: 200px;
+}
+.pipes__pipe1 {
+  background-color: blue;
+  flex: 1;
+}
+.pipes__pipe2 {
+  background-color: blue;
+  flex: 1;
+}
+
 @media screen and (min-width: 501px) {
   .game {
     width: 500px;
