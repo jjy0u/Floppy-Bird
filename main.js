@@ -1,8 +1,15 @@
 const flappy = document.querySelector("#flappy")
 const game = document.querySelector(".game")
+
+
 const pipes = document.querySelector(".pipes")
-const pipe1 = document.querySelector(".pipes__pipe1")
-const pipe2 = document.querySelector(".pipes__pipe2")
+const pipes1 = document.querySelector(".pipes1")
+const pipe1_1 = document.querySelector(".pipes1__pipe1")
+const pipe1_2 = document.querySelector(".pipes1__pipe2")
+
+const pipes2 = document.querySelector(".pipes2")
+const pipe2_1 = document.querySelector(".pipes2__pipe1")
+const pipe2_2 = document.querySelector(".pipes2__pipe2")
 
 let hasGravity = false
 
@@ -31,10 +38,11 @@ const setGravity = () => {
     const frame = () => {
         let flappyTop = parseInt(window.getComputedStyle(flappy).getPropertyValue("top"))
         if (flappy.style.top == 600 + "px") {
-        
             clearInterval(gravity);
             pipes.style.right = 0 + "px";
-            flappy.style.top = 330 + "px"
+            randomizePipe(pipe1_1)
+            randomizePipe(pipe1_2) 
+            flappy.style.top = 330 + "px";
             hasGravity = false
         } else{
             flappy.style.top = flappyTop +  gravityAdd + 'px'
@@ -52,23 +60,20 @@ const frame = () => {
     if (flappy.style.top == 600 + "px") {
         clearInterval(movingPipes);
     }
-        if (pipes.style.right == 500 + 'px') {
-            pipes.style.right = -100 + 'px'
-            pipe1.style.flex = Math.random() * (5 - 0.3) + 0.3
-            pipe2.style.flex = Math.random() * (5 - 0.3) + 0.3
-            
-        } else{
+    if (pipes.style.right == 500 + 'px') {
+        pipes.style.right = -100 + 'px'
+        randomizePipe(pipe1_1)
+        randomizePipe(pipe1_2) 
+    } else{
         pipes.style.right = pipesRight + motion + 'px'
     }
 }
 const movingPipes = setInterval(frame, 10);
 }
 
-
-
-//pipeMovement()
-
+const randomizePipe = (pipe) => {
+    pipe.style.flex = Math.random() * (5 - 0.3) + 0.3
+}
 
 document.addEventListener('keydown',setGravity)
 document.addEventListener('keydown',makeFlappyJumpEvent)
-//document.addEventListener('change' , pipeMovement)

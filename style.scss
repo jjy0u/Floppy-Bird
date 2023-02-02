@@ -8,6 +8,7 @@
     height: 100vh;
     background-color: aquamarine;
     position: relative;
+    //overflow:hidden;
 }
 
 #flappy{
@@ -31,10 +32,45 @@
 }
 
 .pipes{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: auto;
+    gap: 150px;
+    position: absolute;
+    right: -250px;
+
+}
+
+.pipes1{
     width: 100px;
     height: 100%;
-    position: absolute;
-    right: 0px;
+    //position: absolute;
+    //right: 0px;
+    display: flex;
+    flex-direction: column;
+
+    &__hole{
+        background-color: transparent;
+        height: 200px;
+    }
+
+    &__pipe1{
+        background-color: blue;
+        flex: 1;
+
+    }
+    &__pipe2{
+        background-color: blue;
+        flex: 1;
+    }
+}
+
+.pipes2{
+    width: 100px;
+    height: 100%;
+    //position: absolute;
+    //right: -300px;
     display: flex;
     flex-direction: column;
 

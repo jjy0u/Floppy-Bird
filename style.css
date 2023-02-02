@@ -40,22 +40,49 @@
   }
 }
 .pipes {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: auto;
+  gap: 150px;
+  position: absolute;
+  right: -250px;
+}
+
+.pipes1 {
   width: 100px;
   height: 100%;
-  position: absolute;
-  right: 0px;
   display: flex;
   flex-direction: column;
 }
-.pipes__hole {
+.pipes1__hole {
   background-color: transparent;
   height: 200px;
 }
-.pipes__pipe1 {
+.pipes1__pipe1 {
   background-color: blue;
   flex: 1;
 }
-.pipes__pipe2 {
+.pipes1__pipe2 {
+  background-color: blue;
+  flex: 1;
+}
+
+.pipes2 {
+  width: 100px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.pipes2__hole {
+  background-color: transparent;
+  height: 200px;
+}
+.pipes2__pipe1 {
+  background-color: blue;
+  flex: 1;
+}
+.pipes2__pipe2 {
   background-color: blue;
   flex: 1;
 }
