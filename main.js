@@ -1,5 +1,6 @@
 const flappy = document.querySelector("#flappy")
 const game = document.querySelector(".game")
+const score = document.querySelector("#numer_score")
 
 
 const pipes1 = document.querySelector(".pipes1")
@@ -71,7 +72,10 @@ const frame = () => {
     
     if (flappy.style.top == 600 + "px" || (((pipes1.style.right <= flappyRight + "px") && (pipesRight + pipesWidth + "px" >= flappyRight + "px") && (pipes1.style.right)>0 + "px") && ((holePosition.top + "px" >= flappy.style.top) || (holePosition.top + holePosition.height + "px" <= flappyTop + flappyHeight + "px")))) {
         clearInterval(movingPipes);
+    } else if (pipes1.style.right >= flappyRight + 50 + "px") {
+        score.innerText += 1;
     }
+
     if (pipes1.style.right == 500 + 'px') {
         pipes1.style.right = -100 + 'px'
         randomizePipe(pipe1_1)
@@ -93,6 +97,7 @@ const frame = () => {
     let flappyTop = parseInt(window.getComputedStyle(flappy).getPropertyValue("top"))
     let flappyHeight = parseInt(window.getComputedStyle(flappy).getPropertyValue("height"))
     
+
     if (flappy.style.top == 600 + "px" || (((pipes2.style.right <= flappyRight + "px") && (pipesRight + pipesWidth + "px" >= flappyRight + "px") && (pipes2.style.right)>0 + "px") && ((holePosition.top + "px" >= flappy.style.top) || (holePosition.top + holePosition.height + "px" <= flappyTop + flappyHeight + "px")))) {
         clearInterval(movingPipes);
     }
