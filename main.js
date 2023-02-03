@@ -4,6 +4,7 @@ const score = document.querySelector("#number_score")
 const gameOverScore = document.querySelector("#over_score")
 const bestScore = document.querySelector("#best_score")
 const gameOver = document.querySelector(".game-over")
+const restartButton = document.querySelector(".restart-button")
 
 const pipes1 = document.querySelector(".pipes1")
 const pipe1_1 = document.querySelector(".pipes1__pipe1")
@@ -68,10 +69,9 @@ gameOver.style.display = "flex"
 }
 
 const restartGame = () => {
-    
+    gameOver.style.display = "none"
+    score.innerHTML = 0;
 }
-
-
 
 const scoreKeep = () => {
     scoreStore.push(score.innerHTML)
@@ -94,7 +94,6 @@ const frame = () => {
         scoreKeep()
         GameOverScreen()
         clearInterval(movingPipes);
-        score.innerHTML = 0;
     } else if (pipes1.style.right == flappyRight + 50 + "px") {
         score.innerText ++
     }
@@ -126,7 +125,6 @@ const frame = () => {
         scoreKeep()
         GameOverScreen()
         clearInterval(movingPipes);
-        score.innerHTML = 0
     } else if (pipes2.style.right == flappyRight + 50 + "px") {
         score.innerText ++
     }
@@ -146,6 +144,6 @@ const randomizePipe = (pipe) => {
 }
 
 
-
 document.addEventListener('keydown',setGravity)
 document.addEventListener('keydown',makeFlappyJumpEvent)
+restartButton.addEventListener('click', restartGame)
