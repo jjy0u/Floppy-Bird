@@ -26,7 +26,6 @@ const makeFlappyJumpEvent = () => {
         if (flappy.style.top <0 + "px") {
             clearInterval(jump)
             jumpInt = 0
-            console.log("time to stop")
         }else{
         flappy.style.top = flappyTop  - jumpInt + 'px'
         }
@@ -67,12 +66,10 @@ const GameOverScreen = () => {
 const restartGame = () => {
     gameOver.style.display = "none";
     score.innerHTML = 0;
-    console.log("testing")
 }
 
 const scoreKeep = () => {
     scoreStore.push(score.innerHTML)
-    console.log(scoreStore)
 }
 
 const pipeMovement = (pipes, pipe_1, pipes_hole) => {
