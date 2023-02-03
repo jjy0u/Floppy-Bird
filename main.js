@@ -38,8 +38,8 @@ const makeFlappyJumpEvent = () => {
 
 const setGravity = () => {
     if (!hasGravity) {
-        pipeMovement()
-        pipe2Movement()
+        pipeMovement(pipes1, pipe1_1, pipe1_2, pipes1_hole)
+        pipeMovement(pipes2, pipe2_1, pipe2_2, pipes2_hole)
         hasGravity = true
     let gravityAdd = 2
     const frame = () => {
@@ -49,9 +49,7 @@ const setGravity = () => {
             pipes1.style.right = 0 + "px";
             pipes2.style.right = -300 + "px";
             randomizePipe(pipe1_1)
-            randomizePipe(pipe1_2) 
             randomizePipe(pipe2_1)
-            randomizePipe(pipe2_2) 
             flappy.style.top = 330 + "px";
             hasGravity = false
         } else{
@@ -80,60 +78,31 @@ const scoreKeep = () => {
 }
 
 
-const pipeMovement = () => {
+
+const pipeMovement = (pipes, pipe_1, pipe_2, pipes_hole) => {
     let motion = 1
 
 const frame = () => {
-    const holePosition = pipes1_hole.getBoundingClientRect()
-    let pipesRight = parseInt(window.getComputedStyle(pipes1).getPropertyValue("right"))
-    let pipesWidth = parseInt(window.getComputedStyle(pipes1).getPropertyValue("width"))
+    const holePosition = pipes_hole.getBoundingClientRect()
+    let pipesRight = parseInt(window.getComputedStyle(pipes).getPropertyValue("right"))
+    let pipesWidth = parseInt(window.getComputedStyle(pipes).getPropertyValue("width"))
     let flappyRight = parseInt(window.getComputedStyle(flappy).getPropertyValue("right"))
     let flappyTop = parseInt(window.getComputedStyle(flappy).getPropertyValue("top"))
     let flappyHeight = parseInt(window.getComputedStyle(flappy).getPropertyValue("height"))
 
-    if (flappy.style.top == 600 + "px" || (((pipes1.style.right <= flappyRight + "px") && (pipesRight + pipesWidth + "px" >= flappyRight + "px") && (pipes1.style.right)>0 + "px") && ((holePosition.top + "px" >= flappy.style.top) || (holePosition.top + holePosition.height + "px" <= flappyTop + flappyHeight + "px")))) {
+    if (flappy.style.top == 600 + "px" || (((pipes.style.right <= flappyRight + "px") && (pipesRight + pipesWidth + "px" >= flappyRight + "px") && (pipes.style.right)>0 + "px") && ((holePosition.top + "px" >= flappy.style.top) || (holePosition.top + holePosition.height + "px" <= flappyTop + flappyHeight + "px")))) {
         scoreKeep()
         GameOverScreen()
         clearInterval(movingPipes);
-    } else if (pipes1.style.right == flappyRight + 50 + "px") {
+    } else if (pipes.style.right == flappyRight + 50 + "px") {
         score.innerText ++
     }
 
-    if (pipes1.style.right == 500 + 'px') {
-        pipes1.style.right = -100 + 'px'
-        randomizePipe(pipe1_1)
-        randomizePipe(pipe1_2) 
+    if (pipes.style.right == 500 + 'px') {
+        pipes.style.right = -100 + 'px'
+        randomizePipe(pipe_1)
     } else{
-        pipes1.style.right = pipesRight + motion + 'px'
-    }
-}
-const movingPipes = setInterval(frame, 10);
-}
-
-const pipe2Movement = () => {
-    let motion = 1
-const frame = () => {
-    const holePosition = pipes2_hole.getBoundingClientRect()
-    let pipesRight = parseInt(window.getComputedStyle(pipes2).getPropertyValue("right"))
-    let pipesWidth = parseInt(window.getComputedStyle(pipes2).getPropertyValue("width"))
-    let flappyRight = parseInt(window.getComputedStyle(flappy).getPropertyValue("right"))
-    let flappyTop = parseInt(window.getComputedStyle(flappy).getPropertyValue("top"))
-    let flappyHeight = parseInt(window.getComputedStyle(flappy).getPropertyValue("height"))
-    
-
-    if (flappy.style.top == 600 + "px" || (((pipes2.style.right <= flappyRight + "px") && (pipesRight + pipesWidth + "px" >= flappyRight + "px") && (pipes2.style.right)>0 + "px") && ((holePosition.top + "px" >= flappy.style.top) || (holePosition.top + holePosition.height + "px" <= flappyTop + flappyHeight + "px")))) {
-        scoreKeep()
-        GameOverScreen()
-        clearInterval(movingPipes);
-    } else if (pipes2.style.right == flappyRight + 50 + "px") {
-        score.innerText ++
-    }
-    if (pipes2.style.right == 500 + 'px') {
-        pipes2.style.right = -100 + 'px'
-        randomizePipe(pipe2_1)
-        randomizePipe(pipe2_2) 
-    } else{
-        pipes2.style.right = pipesRight + motion + 'px'
+        pipes.style.right = pipesRight + motion + 'px'
     }
 }
 const movingPipes = setInterval(frame, 10);
