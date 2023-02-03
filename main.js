@@ -36,6 +36,7 @@ const makeFlappyJumpEvent = () => {
 }
 
 
+
 const setGravity = () => {
     if (!hasGravity) {
         pipeMovement()
@@ -69,7 +70,7 @@ gameOver.style.display = "flex"
 }
 
 const restartGame = () => {
-    gameOver.style.display = "none"
+    gameOver.style.display = "none";
     score.innerHTML = 0;
 }
 
@@ -97,7 +98,6 @@ const frame = () => {
     } else if (pipes1.style.right == flappyRight + 50 + "px") {
         score.innerText ++
     }
-
 
     if (pipes1.style.right == 500 + 'px') {
         pipes1.style.right = -100 + 'px'
