@@ -1,7 +1,9 @@
 const flappy = document.querySelector("#flappy")
 const game = document.querySelector(".game")
 const score = document.querySelector("#number_score")
-
+const gameOverScore = document.querySelector("#over_score")
+const bestScore = document.querySelector("#best_score")
+const gameOver = document.querySelector(".game-over")
 
 const pipes1 = document.querySelector(".pipes1")
 const pipe1_1 = document.querySelector(".pipes1__pipe1")
@@ -13,7 +15,7 @@ const pipe2_1 = document.querySelector(".pipes2__pipe1")
 const pipe2_2 = document.querySelector(".pipes2__pipe2")
 const pipes2_hole = document.querySelector(".pipes2__hole")
 
-
+let scoreStore = []
 let hasGravity = false
 
 let jumpInt = 0
@@ -59,6 +61,24 @@ const setGravity = () => {
 }
 }
 
+const GameOverScreen = () => {
+gameOverScore.innerHTML = score.innerHTML
+bestScore.innerHTML = Math.max(...scoreStore)
+gameOver.style.display = "flex"
+}
+
+const restartGame = () => {
+    
+}
+
+
+
+const scoreKeep = () => {
+    scoreStore.push(score.innerHTML)
+    console.log(scoreStore)
+}
+
+
 const pipeMovement = () => {
     let motion = 1
 
@@ -71,17 +91,14 @@ const frame = () => {
     let flappyHeight = parseInt(window.getComputedStyle(flappy).getPropertyValue("height"))
 
     if (flappy.style.top == 600 + "px" || (((pipes1.style.right <= flappyRight + "px") && (pipesRight + pipesWidth + "px" >= flappyRight + "px") && (pipes1.style.right)>0 + "px") && ((holePosition.top + "px" >= flappy.style.top) || (holePosition.top + holePosition.height + "px" <= flappyTop + flappyHeight + "px")))) {
-        const scoreStore = score.innerHTML
+        scoreKeep()
+        GameOverScreen()
         clearInterval(movingPipes);
-        alert("Your score is " + scoreStore)
         score.innerHTML = 0;
     } else if (pipes1.style.right == flappyRight + 50 + "px") {
         score.innerText ++
     }
 
-    /*if (clearInterval(movingPipes)){
-
-    }*/
 
     if (pipes1.style.right == 500 + 'px') {
         pipes1.style.right = -100 + 'px'
@@ -106,9 +123,9 @@ const frame = () => {
     
 
     if (flappy.style.top == 600 + "px" || (((pipes2.style.right <= flappyRight + "px") && (pipesRight + pipesWidth + "px" >= flappyRight + "px") && (pipes2.style.right)>0 + "px") && ((holePosition.top + "px" >= flappy.style.top) || (holePosition.top + holePosition.height + "px" <= flappyTop + flappyHeight + "px")))) {
-        const scoreStore = score.innerHTML
+        scoreKeep()
+        GameOverScreen()
         clearInterval(movingPipes);
-        alert("Your score was " + scoreStore)
         score.innerHTML = 0
     } else if (pipes2.style.right == flappyRight + 50 + "px") {
         score.innerText ++
