@@ -1,4 +1,4 @@
-This was a _nology set project to make a JavaScript game of our choice and I went with Flappy Bird for a shot of nostalgia. Building flappy bird was almost as frustrating as playing the game but I got close enough to the original and I'll break down what I'd like to add in the future. 
+This was a _nology set project to make a JavaScript game of our choice and I went with Flappy Bird for a shot of nostalgia. Building flappy bird was almost as frustrating as playing the game but I got close enough to the original and I'll break down what I'd like to add in the future. Overall, I'm super proud of this project and I'm glad for I've learnt doing it.
 
 Planning
 --------
@@ -34,3 +34,15 @@ For the most part I followed the plan; I started with flappy and the jumping fun
 Pipes:
 For the pipes, I used flex on three elements of a whole pipe which are pipe 1 (the top pipe) and pipe hole and pipe 2(the bottom pipe). I found that changing the flex of one pipe allowed the changing position of the hole so in order to randomise the position of the hole, I randomised the value of flex upon certain conditions. Those conditions were if the game reset, or if the pipe exitted the game. To animate the pipes I used a set interval function that starts when a key is pressed. I created an if statement that would stop the pipe movement when collisions occur. This was by far one of the hardest parts of this project and required a lot thought. I drew out my game on word to help me visualise this if statement.
 
+
+
+Score: The score just required an expression that increased the innerText by 1 every time the pipes reached a certain position. This was stored in an array every time the game ended and the highest value was taken from that array and displayed as the best score.
+
+
+Future Implementations
+----------
+- I would like to improve the collision detection, particularly the up and down collisions which I think I can accomplish by stopping flappys movements (jump) upon collision
+- I would like to have a moving sprite animation for flappy.
+- Stop the second pipe moving when the first is hit
+- More extensive score keeping like a bronze medal when a score of ten is reached etc. and faster moving pipes at higher levels.
+- A pause button
