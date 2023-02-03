@@ -34,8 +34,6 @@ const makeFlappyJumpEvent = () => {
     const jump = setTimeout(frame,10)
 }
 
-
-
 const setGravity = () => {
     if (!hasGravity) {
         pipeMovement(pipes1, pipe1_1, pipes1_hole)
@@ -61,9 +59,9 @@ const setGravity = () => {
 }
 
 const GameOverScreen = () => {
-gameOverScore.innerHTML = score.innerHTML
-bestScore.innerHTML = Math.max(...scoreStore)
-gameOver.style.display = "flex"
+    gameOverScore.innerHTML = score.innerHTML
+    bestScore.innerHTML = Math.max(...scoreStore)
+    gameOver.style.display = "flex"
 }
 
 const restartGame = () => {
@@ -77,35 +75,32 @@ const scoreKeep = () => {
     console.log(scoreStore)
 }
 
-
-
 const pipeMovement = (pipes, pipe_1, pipes_hole) => {
     let motion = 1
 
-const frame = () => {
-    const holePosition = pipes_hole.getBoundingClientRect()
-    let pipesRight = parseInt(window.getComputedStyle(pipes).getPropertyValue("right"))
-    let pipesWidth = parseInt(window.getComputedStyle(pipes).getPropertyValue("width"))
-    let flappyRight = parseInt(window.getComputedStyle(flappy).getPropertyValue("right"))
-    let flappyTop = parseInt(window.getComputedStyle(flappy).getPropertyValue("top"))
-    let flappyHeight = parseInt(window.getComputedStyle(flappy).getPropertyValue("height"))
+    const frame = () => {
+        const holePosition = pipes_hole.getBoundingClientRect()
+        let pipesRight = parseInt(window.getComputedStyle(pipes).getPropertyValue("right"))
+        let pipesWidth = parseInt(window.getComputedStyle(pipes).getPropertyValue("width"))
+        let flappyRight = parseInt(window.getComputedStyle(flappy).getPropertyValue("right"))
+        let flappyTop = parseInt(window.getComputedStyle(flappy).getPropertyValue("top"))
+        let flappyHeight = parseInt(window.getComputedStyle(flappy).getPropertyValue("height"))
 
-    if (flappy.style.top == 600 + "px" || (((pipes.style.right <= flappyRight + "px") && (pipesRight + pipesWidth + "px" >= flappyRight + "px") && (pipes.style.right)>0 + "px") && ((holePosition.top + "px" >= flappy.style.top) || (holePosition.top + holePosition.height + "px" <= flappyTop + flappyHeight + "px")))) {
-        scoreKeep()
-        GameOverScreen()
-        clearInterval(movingPipes);
-    } else if (pipes.style.right == flappyRight + 50 + "px") {
-        score.innerText ++
+        if (flappy.style.top == 600 + "px" || (((pipes.style.right <= flappyRight + "px") && (pipesRight + pipesWidth + "px" >= flappyRight + "px") && (pipes.style.right)>0 + "px") && ((holePosition.top + "px" >= flappy.style.top) || (holePosition.top + holePosition.height + "px" <= flappyTop + flappyHeight + "px")))) {
+            scoreKeep()
+            GameOverScreen()
+            clearInterval(movingPipes);
+        } else if (pipes.style.right == flappyRight + 50 + "px") {
+            score.innerText ++
+        }
+        if (pipes.style.right == 500 + 'px') {
+            pipes.style.right = -100 + 'px'
+            randomizePipe(pipe_1)
+        } else{
+            pipes.style.right = pipesRight + motion + 'px'
+        }
     }
-
-    if (pipes.style.right == 500 + 'px') {
-        pipes.style.right = -100 + 'px'
-        randomizePipe(pipe_1)
-    } else{
-        pipes.style.right = pipesRight + motion + 'px'
-    }
-}
-const movingPipes = setInterval(frame, 10);
+    const movingPipes = setInterval(frame, 10);
 }
 
 const randomizePipe = (pipe) => {
