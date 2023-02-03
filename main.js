@@ -59,7 +59,6 @@ const setGravity = () => {
 }
 }
 
-
 const pipeMovement = () => {
     let motion = 1
 
@@ -71,9 +70,10 @@ const frame = () => {
     let flappyTop = parseInt(window.getComputedStyle(flappy).getPropertyValue("top"))
     let flappyHeight = parseInt(window.getComputedStyle(flappy).getPropertyValue("height"))
 
-    let count = 1
     if (flappy.style.top == 600 + "px" || (((pipes1.style.right <= flappyRight + "px") && (pipesRight + pipesWidth + "px" >= flappyRight + "px") && (pipes1.style.right)>0 + "px") && ((holePosition.top + "px" >= flappy.style.top) || (holePosition.top + holePosition.height + "px" <= flappyTop + flappyHeight + "px")))) {
+        const scoreStore = score.innerHTML
         clearInterval(movingPipes);
+        alert("Your score was " + scoreStore)
         score.innerHTML = 0;
     } else if (pipes1.style.right == flappyRight + 50 + "px") {
         score.innerText ++
@@ -102,7 +102,9 @@ const frame = () => {
     
 
     if (flappy.style.top == 600 + "px" || (((pipes2.style.right <= flappyRight + "px") && (pipesRight + pipesWidth + "px" >= flappyRight + "px") && (pipes2.style.right)>0 + "px") && ((holePosition.top + "px" >= flappy.style.top) || (holePosition.top + holePosition.height + "px" <= flappyTop + flappyHeight + "px")))) {
+        const scoreStore = score.innerHTML
         clearInterval(movingPipes);
+        alert("Your score was " + scoreStore)
         score.innerHTML = 0
     } else if (pipes2.style.right == flappyRight + 50 + "px") {
         score.innerText ++

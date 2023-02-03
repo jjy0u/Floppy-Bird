@@ -8,7 +8,7 @@
     color: black;
     position: absolute;
     top: 30px;
-    right: 300px;
+    right: 280px;
 }
 
 .game{
@@ -54,12 +54,12 @@
     }
 
     &__pipe1{
-        background-color: blue;
+        background-color: green;
         flex: 1;
 
     }
     &__pipe2{
-        background-color: blue;
+        background-color: green;
         flex: 1;
     }
 }
@@ -78,12 +78,12 @@
     }
 
     &__pipe1{
-        background-color: blue;
+        background-color: green;
         flex: 1;
 
     }
     &__pipe2{
-        background-color: blue;
+        background-color: green;
         flex: 1;
     }
 }
