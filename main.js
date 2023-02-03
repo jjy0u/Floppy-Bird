@@ -38,8 +38,8 @@ const makeFlappyJumpEvent = () => {
 
 const setGravity = () => {
     if (!hasGravity) {
-        pipeMovement(pipes1, pipe1_1, pipe1_2, pipes1_hole)
-        pipeMovement(pipes2, pipe2_1, pipe2_2, pipes2_hole)
+        pipeMovement(pipes1, pipe1_1, pipes1_hole)
+        pipeMovement(pipes2, pipe2_1, pipes2_hole)
         hasGravity = true
     let gravityAdd = 2
     const frame = () => {
@@ -79,7 +79,7 @@ const scoreKeep = () => {
 
 
 
-const pipeMovement = (pipes, pipe_1, pipe_2, pipes_hole) => {
+const pipeMovement = (pipes, pipe_1, pipes_hole) => {
     let motion = 1
 
 const frame = () => {
