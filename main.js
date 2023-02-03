@@ -1,6 +1,6 @@
 const flappy = document.querySelector("#flappy")
 const game = document.querySelector(".game")
-const score = document.querySelector("#numer_score")
+const score = document.querySelector("#number_score")
 
 
 const pipes1 = document.querySelector(".pipes1")
@@ -62,6 +62,7 @@ const setGravity = () => {
 
 const pipeMovement = () => {
     let motion = 1
+
 const frame = () => {
     const holePosition = pipes1_hole.getBoundingClientRect()
     let pipesRight = parseInt(window.getComputedStyle(pipes1).getPropertyValue("right"))
@@ -69,11 +70,13 @@ const frame = () => {
     let flappyRight = parseInt(window.getComputedStyle(flappy).getPropertyValue("right"))
     let flappyTop = parseInt(window.getComputedStyle(flappy).getPropertyValue("top"))
     let flappyHeight = parseInt(window.getComputedStyle(flappy).getPropertyValue("height"))
-    
+
+    let count = 1
     if (flappy.style.top == 600 + "px" || (((pipes1.style.right <= flappyRight + "px") && (pipesRight + pipesWidth + "px" >= flappyRight + "px") && (pipes1.style.right)>0 + "px") && ((holePosition.top + "px" >= flappy.style.top) || (holePosition.top + holePosition.height + "px" <= flappyTop + flappyHeight + "px")))) {
         clearInterval(movingPipes);
-    } else if (pipes1.style.right >= flappyRight + 50 + "px") {
-        score.innerText += 1;
+        score.innerHTML = 0;
+    } else if (pipes1.style.right == flappyRight + 50 + "px") {
+        score.innerText ++
     }
 
     if (pipes1.style.right == 500 + 'px') {
@@ -100,6 +103,9 @@ const frame = () => {
 
     if (flappy.style.top == 600 + "px" || (((pipes2.style.right <= flappyRight + "px") && (pipesRight + pipesWidth + "px" >= flappyRight + "px") && (pipes2.style.right)>0 + "px") && ((holePosition.top + "px" >= flappy.style.top) || (holePosition.top + holePosition.height + "px" <= flappyTop + flappyHeight + "px")))) {
         clearInterval(movingPipes);
+        score.innerHTML = 0
+    } else if (pipes2.style.right == flappyRight + 50 + "px") {
+        score.innerText ++
     }
     if (pipes2.style.right == 500 + 'px') {
         pipes2.style.right = -100 + 'px'
