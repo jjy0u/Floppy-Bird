@@ -73,11 +73,15 @@ const frame = () => {
     if (flappy.style.top == 600 + "px" || (((pipes1.style.right <= flappyRight + "px") && (pipesRight + pipesWidth + "px" >= flappyRight + "px") && (pipes1.style.right)>0 + "px") && ((holePosition.top + "px" >= flappy.style.top) || (holePosition.top + holePosition.height + "px" <= flappyTop + flappyHeight + "px")))) {
         const scoreStore = score.innerHTML
         clearInterval(movingPipes);
-        alert("Your score was " + scoreStore)
+        alert("Your score is " + scoreStore)
         score.innerHTML = 0;
     } else if (pipes1.style.right == flappyRight + 50 + "px") {
         score.innerText ++
     }
+
+    /*if (clearInterval(movingPipes)){
+
+    }*/
 
     if (pipes1.style.right == 500 + 'px') {
         pipes1.style.right = -100 + 'px'
