@@ -4,8 +4,7 @@ const score = document.querySelector("#number_score")
 const gameOverScore = document.querySelector("#over_score")
 const bestScore = document.querySelector("#best_score")
 const gameOver = document.querySelector(".game-over")
-const restartButton = document.querySelector(".restart-button")
-
+const restartButton = document.querySelector("#restart-button")
 const pipes1 = document.querySelector(".pipes1")
 const pipe1_1 = document.querySelector(".pipes1__pipe1")
 const pipe1_2 = document.querySelector(".pipes1__pipe2")
@@ -72,6 +71,7 @@ gameOver.style.display = "flex"
 const restartGame = () => {
     gameOver.style.display = "none";
     score.innerHTML = 0;
+    console.log("testing")
 }
 
 const scoreKeep = () => {
@@ -140,7 +140,7 @@ const movingPipes = setInterval(frame, 10);
 }
 
 const randomizePipe = (pipe) => {
-    pipe.style.flex = (Math.random() * (5 - 0.3) + 0.3).toFixed(2)
+    pipe.style.flex = (Math.random() * (4 - 0.3) + 0.3).toFixed(2)
 }
 
 
